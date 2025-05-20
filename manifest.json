@@ -12,12 +12,6 @@
       "matches": ["https://www.zhipin.com/*"],
       "js": ["scripts/jquery.min.js", "scripts/content.js"],
       "css": ["styles/content.css"]
-    },
-    {
-      "matches": ["https://www.zhipin.com/*"],
-      "js": ["scripts/ajaxhook.min.js"],
-      "run_at": "document_end",
-      "world": "MAIN"
     }
   ],
   "background": {
@@ -27,5 +21,11 @@
   "permissions": [
     "webNavigation",
     "storage"
+  ],
+  "web_accessible_resources": [
+    {
+      "resources": ["scripts/ajaxhook.min.js", "scripts/ajaxhook-inject.js"],
+      "matches": ["https://www.zhipin.com/*"]
+    }
   ]
 }

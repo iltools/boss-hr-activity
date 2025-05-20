@@ -16,14 +16,19 @@
 //         console.log(res, 'gegeg')
 //     },
 //   });
-  function addScript (src) {
+  function addScript (src, node = 'body', cb = () => {}) {
     // 注入页面
     const script = document.createElement("script");
     script.setAttribute("src", chrome.runtime.getURL(src));
-    document.head.appendChild(script);
+    script.onload = () => {
+        cb()
+    }
+    document[node].appendChild(script);
   }
   // 注入脚本到原网页，也可以使用manifest.json定义"world": "MAIN"来实现content与原网页的共享
-  addScript("scripts/ajaxhook.min.js")
+  addScript("scripts/ajaxhook.min.js", undefined, () => {
+    addScript("scripts/ajaxhook-inject.js")
+  })
   // 业务带阿米
   let bodyObserver
     const bodyObserverEle = document.body

@@ -1,5 +1,5 @@
 chrome.webNavigation.onCompleted.addListener(() => {
-    console.log("Navigation completed")
+    // console.log("Navigation completed")
 })
 
 function getCurrentTabId() {
